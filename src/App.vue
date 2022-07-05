@@ -4,6 +4,8 @@
 
     <!-- <v-autocomplete></v-autocomplete> -->
     <v-main>
+      <Latest />
+      <Popular />
       <router-view></router-view>
       <v-container v-for="i in 6" :key="i" class="grey lighten-5">
         <v-row class="my-4" no-gutters style="height: 150px">
@@ -22,6 +24,9 @@
 <script>
 import Movie from "./components/Movie.vue";
 import Navigation from "./components/Navigation.vue";
+import Popular from "./components/Popular.vue";
+import Latest from "./components/Latest.vue";
+
 export default {
   name: "App",
 
@@ -40,6 +45,8 @@ export default {
   components: {
     Movie,
     Navigation,
+    Latest,
+    Popular,
   },
   methods: {},
 };
