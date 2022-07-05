@@ -1,32 +1,46 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
-  </div>
+  <v-app>
+    <Navigation />
+
+    <!-- <v-autocomplete></v-autocomplete> -->
+    <v-main>
+      <router-view></router-view>
+      <v-container v-for="i in 6" :key="i" class="grey lighten-5">
+        <v-row class="my-4" no-gutters style="height: 150px">
+          <v-col v-for="n in 5" :key="n">
+            <Movie :movie="movies[i].download_url" />
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+    <v-footer app>
+      <!-- -->
+    </v-footer>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Movie from "./components/Movie.vue";
+import Navigation from "./components/Navigation.vue";
+export default {
+  name: "App",
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+  data: () => ({
+    movies: [],
+  }),
+  mounted() {
+    fetch("https://picsum.photos/v2/list")
+      .then((response) => response.json())
+      .then((resp) => {
+        this.movies = resp;
+        console.log(this.movies);
+      })
+      .catch((err) => console.log(err));
+  },
+  components: {
+    Movie,
+    Navigation,
+  },
+  methods: {},
+};
+</script>
