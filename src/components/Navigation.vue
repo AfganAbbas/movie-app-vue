@@ -13,8 +13,8 @@
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-xs-only">
       <v-btn text to="/watch-list"> Watch list </v-btn>
-      <v-btn text> Log in </v-btn>
-      <v-btn text> Sign up </v-btn></v-toolbar-items
+      <v-btn text to="/log-in"> Log in </v-btn>
+      <v-btn text to="/sign-up"> Sign up </v-btn></v-toolbar-items
     >
   </v-toolbar>
 </template>
